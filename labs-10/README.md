@@ -1,2 +1,5 @@
 Créer un nouveau workspace  
-sh```J```
+sh 
+```
+terraform workspace new <nom_workspace>
+```
