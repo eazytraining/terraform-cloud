@@ -27,7 +27,7 @@ jobs:
       - name: Configure Terraform Cloud
         run: |
           echo "credentials \"$TF_API_URL\" {" >> ~/.terraformrc
-          echo "  token = \"${{ secrets.TF_TOKEN }}\"" >> ~/.terraformrc
+          echo "  token = \"${{ secrets.TF_API_TOKEN }}\"" >> ~/.terraformrc
           echo "}" >> ~/.terraformrc
 
       - name: Initialize Terraform
