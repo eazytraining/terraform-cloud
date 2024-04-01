@@ -37,7 +37,7 @@ jobs:
           terraform init
 
         
-      - name: Terraform plan
+      - name: Terraform apply
         run: |
           ls
-          terraform plan -out=tfplan $CONFIG_DIRECTORY
+          terraform apply
