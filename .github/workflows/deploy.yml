@@ -33,9 +33,9 @@ jobs:
       - name: Initialize Terraform
         run: |
           ls
-          terraform init
+          terraform init $CONFIG_DIRECTORY
 
         
       - name: Terraform plan
         run: |
-          terraform plan -out=tfplan
+          terraform plan -out=tfplan $CONFIG_DIRECTORY
