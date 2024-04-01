@@ -33,9 +33,11 @@ jobs:
       - name: Initialize Terraform
         run: |
           ls
-          terraform init -chdir=$CONFIG_DIRECTORY
+          cd labs-17
+          terraform init
 
         
       - name: Terraform plan
         run: |
+          ls
           terraform plan -out=tfplan $CONFIG_DIRECTORY
