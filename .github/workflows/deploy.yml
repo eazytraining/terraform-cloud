@@ -35,9 +35,11 @@ jobs:
           ls
           cd labs-17
           terraform init
+          ls -a
 
         
       - name: Terraform apply
         run: |
           ls
+          cd labs-17
           terraform apply
