@@ -33,7 +33,7 @@ jobs:
       - name: Initialize Terraform
         run: |
           ls
-          terraform init -chdir $CONFIG_DIRECTORY
+          terraform init -test-directory=$CONFIG_DIRECTORY
 
         
       - name: Terraform plan
