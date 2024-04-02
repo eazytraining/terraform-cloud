@@ -41,5 +41,6 @@ jobs:
         
       - name: Terraform apply
         run: |
+          ls -a
           terraform apply --auto-approve
         working-directory: ${{ env.CONFIG_DIRECTORY }}
