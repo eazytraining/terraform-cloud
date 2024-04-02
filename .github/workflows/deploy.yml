@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+    
       
 
 env:
@@ -29,6 +30,7 @@ jobs:
           echo "credentials \"$TF_API_URL\" {" >> ~/.terraformrc
           echo "  token = \"${{ secrets.TF_API_TOKEN }}\"" >> ~/.terraformrc
           echo "}" >> ~/.terraformrc
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
 
       - name: Initialize Terraform
         run: |
@@ -36,6 +38,7 @@ jobs:
           cd labs-17
           terraform init
           ls -a
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
 
         
       - name: Terraform apply
@@ -43,3 +46,4 @@ jobs:
           ls
           cd labs-17
           terraform apply
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
