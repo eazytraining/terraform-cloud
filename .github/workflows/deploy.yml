@@ -34,8 +34,6 @@ jobs:
 
       - name: Initialize Terraform
         run: |
-          ls
-          cd labs-17
           terraform init
           ls -a
         working-directory: ${{ env.CONFIG_DIRECTORY }}
@@ -43,7 +41,5 @@ jobs:
         
       - name: Terraform apply
         run: |
-          ls
-          cd labs-17
-          terraform apply
+          terraform apply --auto-approve
         working-directory: ${{ env.CONFIG_DIRECTORY }}
