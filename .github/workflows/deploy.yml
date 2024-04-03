@@ -10,7 +10,7 @@ on:
 env:
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_API_URL: "app.terraform.io"
-  CONFIG_DIRECTORY: "labs-17"
+  CONFIG_DIRECTORY: "/TP_AWS/labs-17"
 
 jobs:
   terraform:
