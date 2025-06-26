@@ -1,29 +1,67 @@
-- Connectez-vous à votre compte Terraform Cloud sur le site web officiel.
+# Configuration de Terraform Cloud
 
-pour creer des variables sets
-- choissiser votre organisation > settings > variable sets > create variable sets
-    - entrer un nom
-    - une description
-    - choisir le champ d'action de la variable
-    - puis cliquer sur Add variable
+## 1. Configuration des Variables d'Environnement
 
-une fois a ce niveau il faut entrer le nom de la variable et la valeur de cette variable
-pour le cas des cles d'acces alors il faut utiliser:
-    AWS_ACCESS_KEY_ID
-    AWS_SECRET_ACCESS_KEY
+### Étapes pour créer un Variable Set :
 
-une fois les valeurs rajouter il faut choisir Environment Variable et cocher la case sentive puis cliquer sur Add Variable > Create variable set
+1. **Connexion**  
+   Accédez à [Terraform Cloud](https://app.terraform.io) et authentifiez-vous
 
+2. **Navigation**  
+Votre Organisation → Settings → Variable Sets → Create variable set
 
-Connexion a terraform cloud via la CLI:
+3. **Configuration du set**  
+- **Nom** : Donnez un nom explicite (ex: `aws-global-credentials`)
+- **Description** : Ajoutez une note descriptive
+- **Scope** : Définissez la portée d'application
+
+4. **Ajout des variables AWS**  
+Pour chaque variable :
+- Cliquez `Add variable`
+- Remplissez :
+  ```
+  Key: AWS_ACCESS_KEY_ID
+  Value: [votre-access-key]
+  ```
+  ```
+  Key: AWS_SECRET_ACCESS_KEY  
+  Value: [votre-secret-key]
+  ```
+- Type : Sélectionnez `Environment Variable`
+- ⚠️ Cochez `Sensitive` pour les deux
+
+5. **Finalisation**  
+`Add Variable` → `Create variable set`
+
+## 2. Connexion CLI à Terraform Cloud
 
 ```bash
 terraform login
 ```
-- Répondez par yes pour confirmer la connection
-- Vous allez être dirigé vers la page de création de token sur terraform cloud. Remplissez la description de votre token, la durée d'expiration et - cliquez sur Generate token 
+Processus d'authentification :
+Confirmez avec yes dans le terminal
 
-- Le token créé s'affiche, vous allez le copier en cliquant sur le bouton Copy qui se trouve à droite du token
+Vous serez redirigé vers l'interface web pour :
 
-- Coller le token créé sur votre CLI où vous avez initié le terraform login
-- Si vous avez procédé convenablement vous aurez ce message de bienvenu à Terraform Cloud 
+Remplir la description du token (ex: "poste-dev-2024")
+
+Définir la durée de validité
+
+Cliquer Generate token
+
+Récupération du token
+
+Utilisez le bouton Copy à côté du token généré
+
+Collez-le dans votre terminal en attente
+
+Validation
+Un message de confirmation apparaîtra en cas de succès.
+
+Important :
+
+Les tokens ont une durée limitée
+
+Ne jamais commit de tokens dans le code
+
+Régénérez périodiquement vos credentials

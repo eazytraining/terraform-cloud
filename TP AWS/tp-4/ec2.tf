@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "PUT YOUR OWN"
-  secret_key = "PUT YOUR OWN"
-}
 resource "aws_instance" "vm" {
     ami = "ami-0c7217cdde317cfec"
     instance_type = "t2.micro"
@@ -25,7 +11,6 @@ resource "aws_instance" "vm" {
       "sudo apt update -y",
       "sudo apt install nginx -y",
       "sudo systemctl start nginx"
-      #"sudo service nginx start"
      ]
     connection {
       type = "ssh"
@@ -42,6 +27,10 @@ resource "aws_eip" "ip" {
     command ="echo PUBLIC IP: ${aws_eip.ip.public_ip} ; ID: ${aws_instance.vm.id} ; AZ: ${aws_instance.vm.availability_zone}; >> infos_ec2.txt"
 
   }
+}
+resource "aws_eip_association" "name" {
+  allocation_id = aws_eip.ip.id
+  instance_id  = aws_instance.vm.id
 }
 
 output "myip" {

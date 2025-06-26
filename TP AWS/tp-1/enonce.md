@@ -1,29 +1,42 @@
-TP1 - Installation de Terraform
+🧪 TP1 – Installation de Terraform
+🔽 1. Télécharger Terraform
+Rendez-vous sur le site officiel de Terraform :
+👉 https://www.terraform.io/downloads.html
 
-Téléchargez le programme d'installation Terraform depuis le site web officiel [suivant](https://www.terraform.io/downloads.html).
+Choisissez la version correspondant à votre système d'exploitation (Windows 32 bits ou 64 bits).
 
-Sélectionnez la version appropriée pour Windows (32 bits ou 64 bits) et cliquez sur le lien de téléchargement.
+Cliquez sur le lien pour télécharger l’archive contenant l’exécutable.
 
-Une fois le téléchargement terminé, extraire le fichier .exe
+📂 2. Extraction et placement de l’exécutable
+Une fois le téléchargement terminé, extrayez l’archive ZIP pour obtenir le fichier terraform.exe.
 
-creer un repertoire au niveau de votre disque : Dans mon cas C:\Terraform
-Copier le fichier.exe a l'interieur
-Ouvrir la panel de gestion des variables d'environnement du systeme : 
-    - Appuyer sur le bouton windows
-    - Tapez env
-    - choisir edit the system environment variables
-    - cliquer sur environment variables
-    - choisir Path dans system variables 
-    - cliquer sur edit
-    - cliquer sur browse (choisir le repertoire ou le fichier .exe a ete extrait : C:\Terraform )
-    - cliquer sur OK puis OK puis OK
+Créez un dossier dédié sur votre disque, par exemple : C:\Terraform.
 
+Déplacez le fichier terraform.exe dans ce dossier.
 
+⚙️ 3. Ajouter Terraform au PATH (sous Windows)
+Appuyez sur la touche Windows, tapez env, puis sélectionnez "Modifier les variables d’environnement système".
 
-Si vous êtes sous linux, vous pouvez déplacer le bianire dans `/usr/bin/` après l’avoir rendu executable
+Cliquez sur "Variables d’environnement".
 
-verifier que terraform est present sur le system en utilisant la commande suivante:
-``` bash
+Dans la section Variables système, sélectionnez la variable Path, puis cliquez sur Modifier.
+
+Cliquez sur Parcourir et ajoutez le dossier C:\Terraform.
+
+Validez en cliquant sur OK, puis encore OK pour fermer les fenêtres.
+
+🐧 4. Installation sous Linux
+Si vous êtes sous Linux :
+
+```bash
+chmod +x terraform
+sudo mv terraform /usr/bin/
+```
+✅ 5. Vérification de l’installation
+Dans un terminal ou une invite de commande, exécutez :
+
+```bash
 terraform --version
 ```
 
+Vous devriez voir la version installée de Terraform s’afficher.
