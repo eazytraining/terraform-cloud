@@ -1,26 +1,4 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-terraform {
-  backend "s3" {
-    region = "us-east-1"
-    access_key = "PUT YOUR OWN"
-    secret_key = "PUT YOUR OWN"
-    bucket = "terraform-backend-ulrich"
-    key = "terraformcloud.tfstate"
-  }
-}
 
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "PUT YOUR OWN"
-  secret_key = "PUT YOUR OWN"
-}
 
 resource "aws_instance" "vm" {
     ami = "ami-0c7217cdde317cfec"

@@ -1,23 +1,9 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "PUT YOUR OWN"
-  secret_key = "PUT YOUR OWN"
-}
 
 resource "aws_instance" "vm" {
-    ami = "ami-0c7217cdde317cfec"
-    instance_type = "t2.micro"
-    key_name = "terraformcloud"
-    security_groups = [ aws_security_group.my_security_group.name ]
+  ami = "ami-0c7217cdde317cfec"
+  instance_type = "t2.micro"
+  key_name = "terraformcloud"
+  security_groups = [ aws_security_group.my_security_group.name ]
   tags = {
     Name = "vm-ulrich"
   }
@@ -25,9 +11,12 @@ resource "aws_instance" "vm" {
 resource "aws_eip" "ip" {
   instance = aws_instance.vm.id 
   domain = "vpc"
-  
 }
 
+resource "aws_eip_association" "name" {
+  allocation_id = aws_eip.ip.id
+  instance_id  = aws_instance.vm.id
+}
 output "myip" {
   value = aws_eip.ip.public_ip
 }

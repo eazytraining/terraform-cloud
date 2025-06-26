@@ -1,7 +1,7 @@
 resource "aws_instance" "vm" {
     ami = "ami-0c7217cdde317cfec"
     instance_type = var.instancetype
-    key_name = "terraformcloud"
+    key_name = "terraform-cloud"
     security_groups = [ aws_security_group.my_security_group.name ]
   tags = {
     Name = var.name
@@ -16,26 +16,14 @@ resource "aws_instance" "vm" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      private_key = file("./terraformcloud.pem")
+      private_key = file("./terraform-cloud.pem")
       host = self.public_ip
     }
   }
 }
-resource "aws_eip" "ip" {
-  instance = aws_instance.vm.id 
-  domain = "vpc"
-  provisioner "local-exec" {
-    command ="echo PUBLIC IP: ${aws_eip.ip.public_ip} ; ID: ${aws_instance.vm.id} ; AZ: ${aws_instance.vm.availability_zone}; >> infos_ec2.txt"
-
-  }
-}
-
-output "myip" {
-  value = aws_eip.ip.public_ip
-}
 
 resource "aws_security_group" "my_security_group" {
-  name        = "my-security-group"
+  name        = "${var.name}-sg"
   description = "Security group allowing access to ports 22, 80, and 443"
 
   ingress {

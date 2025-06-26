@@ -1,18 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "PUT YOUR OWN"
-  secret_key = "PUT YOUR OWN"
-}
-
 resource "aws_instance" "vm" {
     ami = "ami-0c7217cdde317cfec"
     instance_type = "t2.micro"
@@ -28,6 +13,10 @@ resource "aws_eip" "ip" {
   
 }
 
+resource "aws_eip_association" "name" {
+  instance_id = aws_instance.vm.id
+  allocation_id = aws_eip.ip.id
+}
 output "myip" {
   value = aws_eip.ip.public_ip
 }
@@ -39,7 +28,7 @@ dynamic "ingress" {
   for_each = var.sg_ports
   iterator = port
   content {
-     from_port   = port.value
+    from_port   = port.value
     to_port     = port.value
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]

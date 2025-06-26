@@ -1,13 +1,18 @@
-Allez sur le site web d'AWS (https://aws.amazon.com/) et cliquez sur "Créer un compte AWS" en haut à droite.
+Création d’un compte AWS
+Rendez-vous sur le site officiel d’AWS : https://aws.amazon.com/, puis cliquez sur "Créer un compte AWS" en haut à droite de la page.
 
-Suivez les instructions à l'écran :
+Suivez les étapes indiquées à l’écran :
 
-Entrez vos informations personnelles comme votre nom, votre email et votre mot de passe.
-Sélectionnez le type de compte que vous voulez créer (compte personnel ou entreprise).
-Entrez les informations de votre moyen de paiement (carte bancaire).
-Vérifiez votre identité en entrant un code envoyé par SMS ou par appel téléphonique ou par mails.
-Lorsque vous aurez complété toutes ces étapes, votre compte AWS sera créé. Vous recevrez un email de confirmation.
+Renseignez vos informations personnelles (nom, adresse email, mot de passe).
 
-Vous pourrez alors vous connecter à la console AWS (https://console.aws.amazon.com/) et commencer à explorer les services et ressources disponibles.
+Choisissez le type de compte : personnel ou professionnel.
 
-Notez que la création d'un compte AWS est gratuite, mais l'utilisation des services AWS peut engendrer des frais. Assurez-vous de bien comprendre les tarifs avant d'utiliser un service.
+Saisissez les informations de votre moyen de paiement (carte bancaire).
+
+Vérifiez votre identité via un code envoyé par SMS, appel téléphonique ou email.
+
+Une fois toutes ces étapes terminées, votre compte AWS sera activé. Vous recevrez un email de confirmation.
+
+Vous pourrez ensuite vous connecter à la console AWS ici : https://console.aws.amazon.com/, et commencer à explorer les différents services proposés.
+
+💡 Important : La création du compte AWS est gratuite, mais l’utilisation des services peut entraîner des frais. Pensez à consulter les tarifs avant d’utiliser un service.

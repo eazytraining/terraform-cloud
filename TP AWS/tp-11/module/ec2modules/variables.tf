@@ -4,7 +4,7 @@ variable "instancetype" {
 }
 
 variable "name" {
-    type = string
-    default = "ec2"
+  type = string
+  default = "ec2"
   
 }

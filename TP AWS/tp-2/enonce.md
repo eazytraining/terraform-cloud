@@ -1,75 +1,70 @@
-## tp-2 : deployez vos ressources
+# TP-2 : Déployez vos ressources
 
+## Création des clés d'accès AWS
 
-Créer des clés d'accès (access key et secret key) :
+Pour créer des clés d'accès (Access Key et Secret Key) :
 
-- Connectez-vous à la console AWS.
-- Cliquez sur votre nom d'utilisateur en haut à droite, puis sélectionnez "Mes informations de sécurité".
-- Sous "Clés d'accès (ID de clé d'accès et clé d'accès secrète)", cliquez sur "Créer une nouvelle clé d'accès".
-- Choisissez "Générer une nouvelle paire de clés" et cliquez sur "Suivant".
-- Téléchargez le fichier CSV contenant l'ID de clé d'accès et la clé d'accès secrète.
-Assurez-vous de sauvegarder et de sécuriser ces informations, car la clé d'accès secrète ne sera plus accessible après cette étape.
+1. Connectez-vous à la [console AWS](https://console.aws.amazon.com/)
+2. Cliquez sur votre nom d'utilisateur (en haut à droite)
+3. Sélectionnez "Mes informations de sécurité"
+4. Dans la section "Clés d'accès", cliquez sur "Créer une nouvelle clé d'accès"
+5. Choisissez "Générer une nouvelle paire de clés"
+6. Cliquez sur "Suivant"
+7. Téléchargez le fichier CSV contenant les informations
 
-Créer une paire de clés :
+**Important** : Sauvegardez et sécurisez ces informations. La clé secrète ne sera plus accessible après cette étape.
 
-- Connectez-vous à la console AWS (https://console.aws.amazon.com/).
-- Allez dans le service "EC2" (services > Compute > EC2).
-- Dans le panneau de navigation de gauche, cliquez sur "Paires de clés".
-- Cliquez sur "Créer une paire de clés".
-- Donnez un nom à votre paire de clés et sélectionnez le format de fichier (par exemple ".pem" pour Linux/macOS ou ".ppk" pour Windows).
-- Cliquez sur "Créer une paire de clés". Votre navigateur téléchargera le fichier de la clé privée.
-- Récupérer une paire de clés existante :
+## Gestion des paires de clés EC2
 
-Suivez les étapes 1 à 3 ci-dessus.
-Sélectionnez la paire de clés que vous voulez récupérer.
-Cliquez sur "Actions" > "Exporter la clé privée".
-Entrez le mot de passe pour télécharger le fichier de la clé privée.
+### Créer une nouvelle paire de clés
 
-- Initialisez la configuration de Terraform.
+1. Connectez-vous à la [console AWS EC2](https://console.aws.amazon.com/ec2/)
+2. Dans le menu de gauche, cliquez sur "Paires de clés"
+3. Cliquez sur "Créer une paire de clés"
+4. Attribuez un nom à votre paire de clés
+5. Sélectionnez le format :
+   - `.pem` pour Linux/macOS
+   - `.ppk` pour Windows
+6. Cliquez sur "Créer une paire de clés"
+7. Le fichier de clé privée sera téléchargé automatiquement
 
-  La première commande à exécuter après l'écriture d'une nouvelle configuration Terraform est la commande`terraform init` permettant d'initialiser un répertoire de travail contenant les fichiers de configuration Terraform. Il est prudent d'exécuter cette commande plusieurs fois.
+### Récupérer une paire de clés existante
 
-  Si vous définissez ou modifiez des modules ou la configuration du backend pour Terraform, réexécutez cette commande pour réinitialiser votre répertoire de travail. Si vous oubliez, d'autres commandes le détecteront et vous rappelleront de le faire si nécessaire.
+1. Suivez les étapes 1-3 ci-dessus
+2. Sélectionnez la paire de clés souhaitée
+3. Cliquez sur "Actions" > "Exporter la clé privée"
+4. Entrez un mot de passe pour sécuriser le téléchargement
 
-  Exécutez la commande :
+## Configuration Terraform
 
-  ```
-  terraform init
-  ```
+### Initialisation
 
-- Validez les modifications.
+La première commande à exécuter après avoir écrit une configuration Terraform :
 
-  La commande  `terraform plan` vous permet de voir ce que Terraform fera avant d'apporter des modifications.
+```bash
+terraform init
+```
+Note : Cette commande peut être exécutée plusieurs fois. Elle est nécessaire après toute modification des modules ou de la configuration backend.
 
-  Exécutez la commande :
+### Validation des modifications
+Pour prévisualiser les changements avant application :
 
-  ```
-  terraform plan
-  ```
+```bash
+terraform plan
+```
+### Application des modifications
+Pour déployer l'infrastructure :
 
-  
+``` bash
+terraform apply
+```
 
-- Appliquez les modifications.
+Vérification : Après l'exécution, vérifiez dans la console AWS que vos ressources ont bien été créées.
 
-  La commande `terraform apply` vous permet d'appliquer votre configuration et de créer l'infrastructure.
+### Nettoyage des ressources
+Pour détruire l'infrastructure créée :
 
-  Exécutez la commande :
-
-  ```
-  terraform apply
-  ```
-
-  Testez les changements.
-
-  Une fois la commande `terraform apply` terminée, utilisez la console Azure, vous devriez voir la nouvelle machine virtuelle créée.
-
-- Nettoyer les ressources créées.
-
-  Lorsque vous avez terminé, la commande `terraform destroy` détruit l'infrastructure que vous avez créée.
-
-  Exécutez la commande :
-
-  ```shell
-  terraform destroy
-  ```
-
+```bash
+terraform destroy
+```
+Attention : Cette action est irréversible et supprimera toutes les ressources gérées par cette configuration Terraform.
